@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="arrsort.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist\bootstrap-5.0.2-dist\css\bootstrap.min.css">
+<title>ArrSort</title>
+</head>
+<body>
+    <header class="main-header">
+      <section class="Layout">
+      
+        <div class="description"> 
+          <div class="main-logo">
+            <img src="arrsort-logo.jpg" alt="logo" class="logo">
+          </div>
+        
+          <h1 class="main-text">
+            Array Sorting Algorithms Visualizer!
+          </h1>
+        
+           <h3 class="Readmore">Welcome to ArrSort.com– Your Premier Destination for Sorting Algorithm Time Complexity Analysis!</h3>
+            <button class="btn-learn">
+                <a href="#" class="btn"> Learn more &darr;</a>
+                
+            </button>
+            <div class="read-text">
+              <p class="more-content">Are you a developer, engineer, or computer science enthusiast striving for optimal performance in your applications? Look no further! ArrSort.com is your go-to resource for comprehensive time complexity analysis of sorting algorithms, ensuring that you choose the most efficient solution for your specific needs.Time Complexity against each your inputs make you more confident regarding the type of sorting which works fasts and more suitable according to your scanerio.</p>
+            </div>
+            </div>
+          </div>
+            <div class="animation">
+              <video  autoplay muted loop class="animation" src="How Merge Sort Works (Animated).mp4" type="video/mp4" >
+              </video>
+            </div>
+     
+      </section>
+    </header>
+<main class="main-menu">
+    <section class="menu">
+      <ul class="sorting-options">
+        
+        <li><button onclick="sortArray('Counting Sort')">countingSort</button></li>
+        <li><button onclick="sortArray('mergeSort')">Merge Sort</button></li>
+        <li><button onclick="sortArray('quickSort')">Quick Sort</button></li>
+        <li><button onclick="sortArray('heapSort')">Heap Sort</button></li>
+      </ul>
+  
+    </section>
+    
+    <section class="sort-order">
+
+        <div class="input-responsive arrSize margin d-flex">
+          <label for="array-size"  class="label-text p-4 text-center mx-5">Array Size:</label>
+          <input placeholder="Enter array Size "  aria-label="default" type="number" id="array-size" min="1" required class="form-control">
+          <!---  <label for="arraySize" class="label-text">Array Size:</label>
+            <input type="number" id="arraySize"  required   class="input-area textbox-1">
+          -->
+    
+        </div>
+
+        <div class="min-max">
+            <div class="input-responsive margin col d-flex justify-content-center" id="min">
+                <label for="min-value" class="label-text p-4 text-center mx-5">Minimum Value:</label>
+                <input placeholder="Enter Lower Bound of array" type="number" id="min-value" aria-label="Default" required class="form-control" /> 
+                
+                
+            </div>
+
+            <div class="input-responsive margin col d-flex justify-content-center" id="max">
+              <label for="max-value" class="label-text label-text-max p-4 text-center mx-5">Maximum Value:</label>
+              <input type="number" placeholder="Enter Upper Bound of array" aria-label="Default" id="max-value" required  class="form-control">
+
+              <!--<label for="max" class="label-text label-text-max">Maximum</label>
+              <input type="number" id=" max"   required   class="input-area textbox-ii">-->
+            </div>
+
+
+        </div>
+
+
+        <div class="input-responsive input margin d-flex">
+
+          <label for="arrayElements" class="label-text p-4 text-center mx-5">Array Elements (comma-separated):</label>
+          <textarea id="arrayElements" aria-label="default" placeholder="Enter array manually like e.g., 5,2,8,1,3" required class="form-control"></textarea>
+
+        </div>
+
+        <div class="input-responsive selectOrder margin d-flex">
+          <label for="sortingOrder" class="label-text p-4 text-center mx-5">Select Sorting Order:</label>
+          <select id="sortingOrder" aria-label="default" class="form-control">
+              <option value="ascending" class="input-area">Ascending</option>
+              <option value="descending" class="input-area">Descending</option>
+          </select>
+        </div>
+
+        <!-- Sorting result -->
+
+        <div id='result_scroll'>
+          <div id='result_sorting' class="d-none">
+              <div class="input-responsive sortresult margin d-flex">
+                <label for="sortedResult" class="label-text p-4 text-center mx-5">Sorted Result:</label>
+                <textarea id="sortedResult" placeholder="Time" aria-label="default" readonly class="form-control"></textarea>
+              </div>
+
+              <div class="input-responsive time-complexity d-flex">
+                <label for="timeComplexity" class="label-text label-text-4 p-4 text-center mx-5">Time Complexity</label>
+                <textarea id="timeComplexity" placeholder="Time" aria-label="default" readonly class="form-control"></textarea>
+              </div>
+
+        
+
+              <div class="input-responsive execution-time d-flex mt-5">
+                <label for="excuteTime" class="label-text label-text-4 p-4 text-center mx-5">Excute Time</label>
+                <textarea id="excuteTime" placeholder="Time" aria-label='default' readonly class="form-control"></textarea>
+              </div>
+          </div>
+        </div>
+        <div class="random">
+            <button id="generate-button" class="rand-btn">Generate Array</button>
+        </div>
+     </section>
+   
+ 
+     <section class="lcs">
+        <div class="lcs-header">
+          <h1 class="lcs-bg p-4 text-center mx-5">Longest Common SubSequence</h1>
+        </div>
+        
+        <div class=" input-string d-flex flex-column">
+          <div class="input-responsive d-flex">
+              <label for="string1" class="label-text p-4 text-center mx-5">Enter first string:</label>
+              <input type="text" placeholder="Enter first string" aria-label="default" id="string1" class="form-control">
+          </div>
+          
+          <div class="input-responsive d-flex mt-4">
+              <label for="string2" class="label-text p-4 text-center mx-5">Enter second string:</label>
+              <input type="text" aria-label="default" placeholder="Enter second string" id="string2" class="form-control">
+          </div>
+        </div>
+        <div>
+          <button onclick="findLongestCommonSubstring()" class="rand-btn">Find Longest Common Subsequence</button>
+          <div id='result2_scroll'>
+          <div id='LCS' class="d-none mt-3 ">
+              <h3>The Longest Common Subsequence :</h3>
+              <input aria-label="default" type="text" id="result" class="form-control mt-3" readonly>
+          </div>
+        </div>
+        </div>
+      </section>
+</main>
+
+<footer class="footer d-flex flex-column">
+  <h3 class="footer-text p-5 w-100 text-center">@2023 arrSort,Pakistan.inc. All rights reserved</h3>
+</footer>
+<script src="arrsort.js"></script>
+</body>
+</html>
